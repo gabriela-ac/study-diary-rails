@@ -1,3 +1,6 @@
+<%= link_to 'Editar', edit_study_item_path(@study_item) %>
+<%= link_to 'Apagar', @study_item, method: :delete, data: { confirm: 'Tem certeza de que deseja apagar?' } %>
+
 <%= render @study_item %>
 
 <%= link_to 'Voltar', root_path %>
