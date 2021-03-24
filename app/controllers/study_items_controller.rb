@@ -3,6 +3,10 @@ class StudyItemsController < ApplicationController
     @study_items = StudyItem.all
   end
   
+  def show
+    @study_item = StudyItem.find(params[:id])
+  end
+
   def new
     @study_item = StudyItem.new
   end
