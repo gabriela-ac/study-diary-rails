@@ -1,5 +1,10 @@
 <%= link_to 'Editar', edit_study_item_path(@study_item) %>
 <%= link_to 'Apagar', @study_item, method: :delete, data: { confirm: 'Tem certeza de que deseja apagar?' } %>
+<% if @study_item.finalized? %>
+  <p>Finalizada em: <%= @study_item.finalized_at.strftime('%d/%m/%Y - %H:%M') %></p>
+<% else %>
+  <%= link_to '✔ Marcar como feito', mark_as_done_study_item_path(@study_item), method: :post %>
+<% end %>
 
 <%= render @study_item %>
 
