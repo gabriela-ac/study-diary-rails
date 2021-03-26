@@ -8,6 +8,7 @@ class StudyItemsController < ApplicationController
 
   def new
     @study_item = StudyItem.new
+    @categories = Category.all
   end
 
   def create
@@ -15,16 +16,20 @@ class StudyItemsController < ApplicationController
     if @study_item.save
       redirect_to root_path
     else
+      @categories = Category.all
       render :new
     end
   end
 
-  def edit; end
+  def edit
+    @categories = Category.all
+  end
 
   def update
     if @study_item.update(study_item_params)
       redirect_to @study_item
     else
+      @categories = Category.all
       render :edit
     end
   end
@@ -45,6 +50,6 @@ class StudyItemsController < ApplicationController
   end
 
   def study_item_params
-    params.require(:study_item).permit(:title, :category, :description)
+    params.require(:study_item).permit(:title, :category_id, :description)
   end
 end
